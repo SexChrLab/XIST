@@ -14,11 +14,11 @@ GENCODE <- "gencode.v19.genes.v7.patched_contigs.gff3"
 GENE_LST <- "~/XIST/Files/X_Genes_Status.json"
 
 # Results
-LM_FEM <- "~/XIST/Tissue/Factor_Female_Tissue_Correlations.csv"
-LM_MALE <- "~/XIST/Tissue/Factor_Male_Tissue_Correlations.csv"
+LM_FEM <- "~/XIST/Tissue/Factor/Factor_Female_Tissue_Correlations.csv"
+LM_MALE <- "~/XIST/Tissue/Factor/Factor_Male_Tissue_Correlations.csv"
 
 # Session data 
-DATA <- "~/XIST/Factor_Tissue_011120.RData"
+DATA <- "~/XIST/Tissue/Factor/Factor_Tissue_011320.RData"
 
 # Load libraries
 library(readr) 
