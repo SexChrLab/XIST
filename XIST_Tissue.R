@@ -1,3 +1,5 @@
+#!/usr/bin/env Rscript
+
 # Perform linear regression on the gene count data (version 7).
 # Fit linear models: 
 # Reponse variable: Mean X chromosome expression and various sets of X-linked genes 
@@ -12,11 +14,11 @@ GENCODE <- "gencode.v19.genes.v7.patched_contigs.gff3"
 GENE_LST <- "~/XIST/Files/X_Genes_Status.json"
 
 # Results
-LM_FEM <- "~/XIST/Tissue/Female_Tissue_Correlations.csv"
-LM_MALE <- "~/XIST/Tissue/Male_Tissue_Correlations.csv"
+LM_FEM <- "~/XIST/Tissue/Factor_Female_Tissue_Correlations.csv"
+LM_MALE <- "~/XIST/Tissue/Factor_Male_Tissue_Correlations.csv"
 
 # Session data 
-DATA <- "~/XIST/Gene_Tissue_121919.RData"
+DATA <- "~/XIST/Factor_Tissue_011120.RData"
 
 # Load libraries
 library(readr) 
@@ -277,7 +279,7 @@ m.MeanX_Vs_XIST <- Map(Rename_Col,
 
 # Apply lm to each df in list
 Linear_Model.1 <- function(x) {
-  z <- lm(MeanX ~ XIST, data = x)
+  z <- lm(MeanX ~ XIST + rownames(x), data = x)
   return(z)
 }
 lm_f.MeanX_XIST <- lapply(f.MeanX_Vs_XIST, Linear_Model.1)
@@ -443,7 +445,7 @@ m.Immune_Silenced_Mean_Vs_XIST <- Map(Rename_Col,
 
 # Apply lm to each df in list
 Linear_Model.2 <- function(x) {
-  z <- lm(Mean_Silenced ~ XIST, data = x)
+  z <- lm(Mean_Silenced ~ XIST + rownames(x), data = x)
   return(z)
 }
 
@@ -622,7 +624,7 @@ m.Immune_Mean_Variable_Vs_XIST <- Map(Rename_Col,
 
 # Apply lm to each df in list
 Linear_Model.3 <- function(x) {
-  z <- lm(Mean_Variable ~ XIST, data = x)
+  z <- lm(Mean_Variable ~ XIST + rownames(x), data = x)
   return(z)
 }
 
@@ -781,7 +783,7 @@ m.Immune_Mean_Incomplete_Vs_XIST <- Map(Rename_Col,
 
 # Apply lm to each df in list
 Linear_Model.4 <- function(x) {
-  z <- lm(Mean_Incomplete ~ XIST, data = x)
+  z <- lm(Mean_Incomplete ~ XIST + rownames(x), data = x)
   return(z)
 }
 
@@ -938,7 +940,7 @@ m.PAR_Mean_Vs_XIST <- Map(Rename_Col,
 
 # Apply lm to each df in list
 Linear_Model.5 <- function(x) {
-  z <- lm(Misc ~ XIST, data = x)
+  z <- lm(Misc ~ XIST + rownames(x), data = x)
   return(z)
 }
 
